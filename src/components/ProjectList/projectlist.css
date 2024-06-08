@@ -1,0 +1,14 @@
+.columns {
+    columns: 3;
+    padding-top: 10px;
+  }
+  
+.project {
+    padding: 5px;
+  }
+  
+.project img {
+    width: 100%;
+    height: auto;
+  }
+  
