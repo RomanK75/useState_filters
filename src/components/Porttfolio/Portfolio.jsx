@@ -5,7 +5,16 @@ import Toolbar from '../Toolbar/Toolbar.jsx'
 import ProjectList from '../ProjectList/ProjectList.jsx'
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState("All")
+  const filterStorage = {
+    key:'filter',
+    get () {
+      return localStorage.getItem(this.key) || 'All'
+    },
+    set(value) {
+      localStorage.setItem('filter',value)
+    }
+  }
+  const [filter, setFilter] = useState(filterStorage.get())
   const filters = ["All", "Websites", "Flayers", "Business Cards"]
   const projects = [{
     img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
@@ -62,7 +71,7 @@ export default function Portfolio() {
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    localStorage.setItem('filter', newFilter);
+    filterStorage.set(newFilter);
   };
   return (
     <div>
